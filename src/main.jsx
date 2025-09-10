@@ -6,6 +6,7 @@ import "./index.css";
 import SignUpPage from "./pages/SignUpPage.jsx";
 import SignInPage from "./pages/SignInPage.jsx";
 import WelcomePage from "./pages/WelcomePage.jsx";
+import LoadingPage from "./pages/LoadingPage.jsx";
 const router = createBrowserRouter([
   {
     path: "/app",
@@ -13,7 +14,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/",
-    element: <WelcomePage />,
+    element: <LoadingPage />,
   },
   { path: "signUp", element: <SignUpPage /> },
   { path: "signIn", element: <SignInPage /> },
