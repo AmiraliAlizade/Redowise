@@ -8,6 +8,7 @@ import SignInPage from "./pages/SignInPage.jsx";
 
 import LoadingPage from "./pages/LoadingPage.jsx";
 import StartPage from "./pages/StartPage.jsx";
+import VerifyAccountPage from "./pages/VerifyAccountPage.jsx";
 const router = createBrowserRouter([
   {
     path: "/app",
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
   },
   { path: "signUp", element: <SignUpPage /> },
   { path: "signIn", element: <SignInPage /> },
+  { path: "verifyAccount", element: <VerifyAccountPage /> },
 ]);
 
 createRoot(document.getElementById("root")).render(

@@ -1,17 +1,8 @@
-import { Link } from "react-router";
-import AppLogoTwo from "../ui/AppLogoTwo";
-import BackLogo from "../ui/BackLogo";
-import Button from "../ui/LinkButton";
-import EmailInput from "../ui/EmailInput";
-import LoginGoogle from "../ui/GoogleLogin";
-import LinkButton from "../ui/LinkButton";
-import GoogleLogin from "../ui/GoogleLogin";
-
-function SignInPage() {
+function VerifyAccountPage() {
   return (
     <div className="fixed inset-0 w-[99.5%]  left-1/2 -translate-x-1/2  bg-white z-50 rounded-2xl overflow-hidden">
       <div className="w-screen h-screen  bg-[linear-gradient(330deg,#F79F00,#51C3B7)] reletive  flex flex-col items-center justify-end pb-1 opacity-70 ">
-        <div className="absolute top-[7%] left-[7%] cursor-pointer">
+        <div className="absolute top-[7%] left-[7%]">
           <BackLogo />
         </div>
         <div className=" absolute  top-[25%] bottom-[80%] left-1/2 right-1/2">
@@ -35,10 +26,8 @@ function SignInPage() {
                 Enter your email to sign in or sign up on Redo-wise
               </h1>
               <EmailInput />
-
-              <LinkButton>Login</LinkButton>
-
-              <GoogleLogin />
+              <Button>Login</Button>
+              <LoginGoogle />
             </div>
           </div>
         </footer>
@@ -47,4 +36,4 @@ function SignInPage() {
   );
 }
 
-export default SignInPage;
+export default VerifyAccountPage;

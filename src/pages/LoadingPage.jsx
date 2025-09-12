@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 import Spinner from "../ui/Spinner";
 import { useEffect } from "react";
 
-import AppLogo1 from "../ui/AppLogoOne";
+import AppLogoOne from "../ui/AppLogoOne";
 
 function LoadingPage() {
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ function LoadingPage() {
       <div className="w-full h-full  bg-[linear-gradient(330deg,#F79F00,#effffd,#51C3B7)] reletive opacity-70">
         <div className=" absolute  top-2/7 bottom-1/2 left-1/2 right-1/2">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  justify-center items-center inline-flex flex-col  p-[100px] ">
-            <AppLogo1 />
+            <AppLogoOne />
             <h1 className=" font-black text-2xl whitespace-nowrap mt-8 font-inter text-[#121F1D]">
               REDO-WISE
             </h1>
