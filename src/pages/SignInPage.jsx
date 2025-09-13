@@ -1,9 +1,8 @@
-import { Link } from "react-router";
 import AppLogoTwo from "../ui/AppLogoTwo";
 import BackLogo from "../ui/BackLogo";
-import Button from "../ui/LinkButton";
+
 import EmailInput from "../ui/EmailInput";
-import LoginGoogle from "../ui/GoogleLogin";
+
 import LinkButton from "../ui/LinkButton";
 import GoogleLogin from "../ui/GoogleLogin";
 
@@ -34,9 +33,9 @@ function SignInPage() {
               <h1 className="font-inter text-black text-[14px]/[23px] font-normal">
                 Enter your email to sign in or sign up on Redo-wise
               </h1>
-              <EmailInput />
+              <EmailInput placeholder="Email address" />
 
-              <LinkButton>Login</LinkButton>
+              <LinkButton to="/verifySignIn">Login</LinkButton>
 
               <GoogleLogin />
             </div>

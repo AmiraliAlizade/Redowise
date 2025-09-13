@@ -1,8 +1,14 @@
+import { useNavigate } from "react-router";
+
 function BackLogo() {
+  const navigate = useNavigate();
   return (
-    <div className="flex justify-center w-[16px] h-[16px] gap-[16px] items-center">
+    <div className="flex justify-center w-[16px] h-[16px] gap-[16px] items-center cursor-pointer" onClick={()=> navigate(-1)}>
       <span className="bg-none border border-solid border-white w-full h-full rounded-full p-[16px]">
-        <g transform="translate(2,7)" className="absolute -translate-x-1/2 -translate-y-1/2">
+        <g
+          transform="translate(2,7)"
+          className="absolute -translate-x-1/2 -translate-y-1/2"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="17"

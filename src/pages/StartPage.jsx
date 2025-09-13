@@ -33,7 +33,7 @@ function StartPage() {
                 Focus On Growth, While We Keep Things Organized.
               </h1>
               <div className=" mt-8">
-                <LinkButton>
+                <LinkButton to='/signIn'>
                   Get Start
                   <ButtonArrow />
                 </LinkButton>
