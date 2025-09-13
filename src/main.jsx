@@ -11,6 +11,7 @@ import StartPage from "./pages/StartPage.jsx";
 
 import VerifySignInPage from "./pages/VerifySignInPage.jsx";
 import VerifySignUpPage from "./pages/VerifySignUpPage.jsx";
+import PasswordLoginPage from "./pages/PasswordLoginPage.jsx";
 const router = createBrowserRouter([
   {
     path: "/app",
@@ -28,6 +29,7 @@ const router = createBrowserRouter([
   { path: "signIn", element: <SignInPage /> },
   { path: "verifySignIn", element: <VerifySignInPage /> },
   { path: "verifySignUp", element: <VerifySignUpPage /> },
+  { path: "passwordLogin", element: <PasswordLoginPage /> },
 ]);
 
 createRoot(document.getElementById("root")).render(

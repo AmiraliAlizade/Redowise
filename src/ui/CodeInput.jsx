@@ -3,7 +3,7 @@ import { useRef, useState } from "react";
 function CodeInput() {
   const inputRef = useRef([]);
   const [values, setValues] = useState(["", "", "", "", ""]);
-
+  const isComplete = values.every((v) => v !== "");
   function handleChange(e, index) {
     let digit = e.target.value.replace(/\D/g, "");
 
@@ -62,7 +62,13 @@ function CodeInput() {
           ref={(el) => (inputRef.current[i] = el)}
           type="number"
           onPaste={handlePaste}
-          className="border h-full w-full border-solid border-[#C2CFCC] focus:outline-[#51C3B7] rounded-[14px] text-center py-[16px] px-0 w-[20%]"
+          className={`border h-full w-full border-solid ${
+            isComplete
+              ? "border-[#17e217]"
+              : val
+              ? "border-[#E11D48]"
+              : " border-[#C2CFCC]"
+          } focus:outline-[#51C3B7] rounded-[14px] text-center py-[16px] px-0 w-[20%]`}
           onWheel={(e) => e.currentTarget.blur()}
         />
       ))}

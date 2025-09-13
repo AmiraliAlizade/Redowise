@@ -40,7 +40,7 @@ function VerifySignInPage() {
               <ResendTime />
               <LinkButton>Verify</LinkButton>
               <Link
-                to="/signInPassword"
+                to="/passwordLogin"
                 className="bg-[#fff] border border-solid border-[#D3DEDC] text-[#525B59] font-medium text-[16px] h-[58px] px-[24px] py-[12px] flex justify-center items-center gap-[8px] mb-4 rounded-[14px]"
               >
                 <svg
