@@ -14,14 +14,17 @@ import EmailInput from "../../ui/EmailInput";
 import InputFrame from "../../ui/InputFrame";
 import ProfileLogo from "../../ui/ProfileLogo";
 import ProfilePicture from "../../ui/ProfilePicture";
+import { useForm } from "react-hook-form";
+import EmailLogo from "../../ui/EmailLogo";
 
-function SignUpForm() {
+function CreateProfileForm() {
   const [isShowPassword, setIsShowPassword] = useState(false);
   const [isEditEmail, setIsEditEmail] = useState(false);
-  const [hasImage, setHasImage] = useState(true);
+  const [hasImage, setHasImage] = useState(false);
   const inputRef = useRef();
-
   const fileInputRef = useRef();
+
+  const { register } = useForm();
 
   useEffect(function () {
     function handleClickOutside(e) {
@@ -55,7 +58,17 @@ function SignUpForm() {
           </div>
         ) : (
           <div ref={inputRef}>
-            <EmailInput placeholder="Alireza@gmail.com" />
+            <div className="flex flex-col border border-solid border-[#D3DEDC] px-[16px] rounded-[8px] justify-center ">
+              <div className="flex py-[8px] gap-[12px] items-center ">
+                <EmailLogo />
+                <input
+                  {...register('email')}
+                  type="email"
+                  className="outline-none border-none font-inter placeholder:font-normal placeholder:text-[#525B59] w-[100%]"
+                  placeholder="Email address"
+                />
+              </div>
+            </div>
           </div>
         )}
       </div>
@@ -193,4 +206,4 @@ function SignUpForm() {
   );
 }
 
-export default SignUpForm;
+export default CreateProfileForm;

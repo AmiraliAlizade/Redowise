@@ -1,7 +1,7 @@
+import CreateProfileForm from "../components/Profile/CreateProfileForm";
 import BackLogo from "../ui/BackLogo";
-import SignUpForm from "../components/Authentication/SignUpForm";
 
-function SignUpPage() {
+function CreateProfilePage() {
   return (
     <div className="fixed inset-0 w-[99.5%]  left-1/2 -translate-x-1/2  bg-white z-50 rounded-2xl overflow-hidden">
       <div className="w-screen h-screen  bg-[linear-gradient(330deg,#F79F00,#51C3B7)] reletive  flex flex-col items-center justify-end pb-1 opacity-70 ">
@@ -11,7 +11,7 @@ function SignUpPage() {
 
         <footer className="    bg-white w-[95%] h-150 p-[20px] rounded-[20px] ">
           <div className="absolute flex flex-col gap-[24px] w-[90%] left-1/2 -translate-x-1/2">
-            <SignUpForm />
+            <CreateProfileForm />
           </div>
         </footer>
       </div>
@@ -19,4 +19,4 @@ function SignUpPage() {
   );
 }
 
-export default SignUpPage;
+export default CreateProfilePage;
