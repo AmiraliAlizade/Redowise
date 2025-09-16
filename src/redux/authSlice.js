@@ -12,7 +12,7 @@ const authSlice = createSlice({
       state.user.email = action.payload;
     },
     setToken: (state, action) => {
-      state.access_token = action.payload;
+      state.user.access_token = action.payload;
     },
   },
 });

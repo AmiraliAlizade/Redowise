@@ -10,13 +10,13 @@ import { useMutation } from "@tanstack/react-query";
 import { verifyOtp } from "../services/apiAuthentication";
 import { useNavigate } from "react-router";
 import { setToken } from "../redux/authSlice";
+import toast from "react-hot-toast";
 
 function VerifySignUpPage() {
   const [otp, setOtp] = useState("");
   const userState = useSelector((state) => state.auth.user);
-  const access_token = useSelector((state) => state.auth?.access_token || "");
 
-  console.log(access_token);
+  console.log(userState.access_token);
   const dispatch = useDispatch();
   const userEmail = userState.email;
   const user = { email: userEmail, otp: otp };
@@ -24,18 +24,22 @@ function VerifySignUpPage() {
 
   function handleSuccess(data) {
     navigate("/createProfile");
-    dispatch(setToken(data.user.token.access_token));
-    console.log(data.user.token.access_token);
+    dispatch(setToken(data.token.access_token));
   }
 
   const { mutate: VerifyUserMutation, isPending } = useMutation({
     mutationFn: verifyOtp,
+    onError: (error) => {
+      toast.error(error.message, {
+        position: "top-center",
+      });
+      console.log(error.message);
+    },
     onSuccess: (data) => {
       handleSuccess(data);
+      console.log(data);
     },
   });
-
-  console.log(userState.access_token);
 
   useEffect(() => {
     console.log("Updated authSlice:", userState);

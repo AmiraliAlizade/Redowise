@@ -16,8 +16,9 @@ import CreateProfilePage from "./pages/CreateProfilePage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import SignUpPage from "./pages/SignUpPage.jsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { persistor,store } from "./redux/store.js";
+import { persistor, store } from "./redux/store.js";
 import { PersistGate } from "redux-persist/integration/react";
+import { Toaster } from "react-hot-toast";
 
 const queryClient = new QueryClient();
 
@@ -52,6 +53,7 @@ createRoot(document.getElementById("root")).render(
           <RouterProvider router={router} />
         </PersistGate>
       </Provider>
+      <Toaster />
     </QueryClientProvider>
   </StrictMode>
 );
