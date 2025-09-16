@@ -1,8 +1,8 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-function CodeInput() {
+function CodeInput({ onComplete }) {
   const inputRef = useRef([]);
-  const [values, setValues] = useState(["", "", "", "", ""]);
+  const [values, setValues] = useState(["", "", "", "", "", ""]);
   const isComplete = values.every((v) => v !== "");
   function handleChange(e, index) {
     let digit = e.target.value.replace(/\D/g, "");
@@ -43,13 +43,23 @@ function CodeInput() {
     e.preventDefault();
     const paste = e.clipboardData.getData("Text").replace(/\D/g, "");
     const newValues = [...values];
-    for (let i = 0; i < Math.min(paste.length, 5); i++) {
+    for (let i = 0; i < Math.min(paste.length, 6); i++) {
       newValues[i] = paste[i];
       if (inputRef.current[i]) inputRef.current[i].value = paste[i];
       setValues(newValues);
-      if (paste.length >= 5 && inputRef.current[4]) inputRef.current[4].focus();
+      if (paste.length >= 6 && inputRef.current[5]) inputRef.current[5].focus();
     }
   }
+
+  useEffect(
+    function () {
+      if (isComplete && onComplete) {
+        const otp = values.join("");
+        onComplete(otp);
+      }
+    },
+    [isComplete, onComplete, values]
+  );
   return (
     <div className="flex gap-[8px] p-[18px]">
       {values.map((val, i) => (

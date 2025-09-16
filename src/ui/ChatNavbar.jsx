@@ -7,7 +7,7 @@ function ChatNavbar() {
   return (
     <nav className="absolute top-[0%]  flex justify-between py-[17px] px-[20px] bg-white w-full rounded-b-[14px] items-center">
       <div className="flex items-center gap-[16px]">
-        <span>
+        <span className="cursor-pointer">
           <img src={menu} alt="" />
         </span>
         <div className="flex items-center gap-[12px]">

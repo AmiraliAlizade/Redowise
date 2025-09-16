@@ -9,6 +9,7 @@ import GoogleLogin from "../ui/GoogleLogin";
 import ResendTime from "../ui/ResendTime";
 import EditEmail from "../ui/EditEmail";
 import { useState } from "react";
+import EmailInput from "../ui/EmailInput";
 
 function PasswordLoginPage() {
   const [isShowPassword, setIsShowPassword] = useState(false);
@@ -36,9 +37,9 @@ function PasswordLoginPage() {
                 Smarter Work. Better Results
               </h1>
               <h1 className="font-inter text-black text-[14px]/[23px] font-normal">
-                Enter your email to sign in or sign up on Redo-wise
+                Enter your email to sign in on Redo-wise
               </h1>
-              <EditEmail />
+              <EmailInput/>
               <div className="flex items-center  border border-solid border-[#D3DEDC] px-[16px] rounded-[8px] justify-between ">
                 <div className="flex justify-center items-center gap-[12px] w-full">
                   <img src={lock} alt="lock" className="w-[24px] h-[24px]" />

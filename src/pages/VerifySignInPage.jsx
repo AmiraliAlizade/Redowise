@@ -26,7 +26,7 @@ function VerifySignInPage() {
             </h1>
           </div>
         </div>
-        <footer className="  bg-white w-[95%] h-105 p-[20px] rounded-[20px] ">
+        <footer className="  bg-white w-[95%] h-90 p-[20px] rounded-[20px] ">
           <div className="absolute flex flex-col gap-[20px] w-[90%] left-1/2 -translate-x-1/2">
             <div className="flex flex-col gap-[12px]">
               <h1 className="font-inter text-black text-[20px] font-bold">
@@ -39,41 +39,7 @@ function VerifySignInPage() {
               <CodeInput />
               <ResendTime />
               <LinkButton>Verify</LinkButton>
-              <Link
-                to="/passwordLogin"
-                className="bg-[#fff] border border-solid border-[#D3DEDC] text-[#525B59] font-medium text-[16px] h-[58px] px-[24px] py-[12px] flex justify-center items-center gap-[8px] mb-4 rounded-[14px]"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                >
-                  <path
-                    d="M6 10V8C6 4.69 7 2 12 2C17 2 18 4.69 18 8V10"
-                    stroke="#525B59"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M12 18.5C13.3807 18.5 14.5 17.3807 14.5 16C14.5 14.6193 13.3807 13.5 12 13.5C10.6193 13.5 9.5 14.6193 9.5 16C9.5 17.3807 10.6193 18.5 12 18.5Z"
-                    stroke="#525B59"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M17 22H7C3 22 2 21 2 17V15C2 11 3 10 7 10H17C21 10 22 11 22 15V17C22 21 21 22 17 22Z"
-                    stroke="#525B59"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-                Login with password
-              </Link>
+             
             </div>
           </div>
         </footer>

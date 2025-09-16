@@ -2,8 +2,10 @@ import AppLogoOne from "../ui/AppLogoOne";
 
 import ButtonArrow from "../ui/ButtonArrow";
 import bgImage from "../images/5915634301788080553-r.png";
-import Button from "../ui/LinkButton";
+
 import LinkButton from "../ui/LinkButton";
+import Button from "../ui/LinkButton";
+import { Link } from "react-router";
 
 function StartPage() {
   return (
@@ -33,10 +35,12 @@ function StartPage() {
                 Focus On Growth, While We Keep Things Organized.
               </h1>
               <div className=" mt-8">
-                <LinkButton to='/signIn'>
-                  Get Start
-                  <ButtonArrow />
-                </LinkButton>
+                <Link to="/login">
+                  <Button>
+                    Get Start
+                    <ButtonArrow />
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>

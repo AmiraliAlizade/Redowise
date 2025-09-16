@@ -3,32 +3,28 @@ import { createRoot } from "react-dom/client";
 import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import "./index.css";
-import SignInPage from "./pages/SignInPage.jsx";
-import authReducer from "../src/redux/authSlice.js";
+
 import LoadingPage from "./pages/LoadingPage.jsx";
 import StartPage from "./pages/StartPage.jsx";
 import VerifySignInPage from "./pages/VerifySignInPage.jsx";
 import VerifySignUpPage from "./pages/VerifySignUpPage.jsx";
 import PasswordLoginPage from "./pages/PasswordLoginPage.jsx";
-import { configureStore } from "@reduxjs/toolkit";
+
 import { Provider } from "react-redux";
 import ChatPage from "./pages/ChatPage.jsx";
 import CreateProfilePage from "./pages/CreateProfilePage.jsx";
+import LoginPage from "./pages/LoginPage.jsx";
+import SignUpPage from "./pages/SignUpPage.jsx";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { persistor,store } from "./redux/store.js";
+import { PersistGate } from "redux-persist/integration/react";
 
-const store = configureStore({
-  reducer: {
-    auth: authReducer,
-  },
-});
+const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
     path: "/app",
-    element: (
-      <Provider store={store}>
-        <App />
-      </Provider>
-    ),
+    element: <App />,
   },
   {
     path: "/",
@@ -41,7 +37,8 @@ const router = createBrowserRouter([
 
   { path: "chat", element: <ChatPage /> },
   { path: "createProfile", element: <CreateProfilePage /> },
-  { path: "signIn", element: <SignInPage /> },
+  { path: "login", element: <LoginPage /> },
+  { path: "signUp", element: <SignUpPage /> },
   { path: "verifySignIn", element: <VerifySignInPage /> },
   { path: "verifySignUp", element: <VerifySignUpPage /> },
   { path: "passwordLogin", element: <PasswordLoginPage /> },
@@ -49,6 +46,12 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <QueryClientProvider client={queryClient}>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <RouterProvider router={router} />
+        </PersistGate>
+      </Provider>
+    </QueryClientProvider>
   </StrictMode>
 );

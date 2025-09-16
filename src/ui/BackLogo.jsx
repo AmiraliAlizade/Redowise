@@ -19,9 +19,9 @@ function BackLogo() {
             <path
               d="M15.9996 5.99914L5.9996 5.99914M4.9996 10.9991C4.9996 10.9991 0.999603 6.22701 0.999603 5.99915C0.999603 5.77128 4.9996 0.999146 4.9996 0.999146"
               stroke="white"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>
         </g>

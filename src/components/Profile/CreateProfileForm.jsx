@@ -62,7 +62,7 @@ function CreateProfileForm() {
               <div className="flex py-[8px] gap-[12px] items-center ">
                 <EmailLogo />
                 <input
-                  {...register('email')}
+                  {...register("email")}
                   type="email"
                   className="outline-none border-none font-inter placeholder:font-normal placeholder:text-[#525B59] w-[100%]"
                   placeholder="Email address"

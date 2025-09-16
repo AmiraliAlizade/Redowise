@@ -4,7 +4,7 @@ function SendLogo() {
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="18"
-        height="58"
+        height="48"
         viewBox="0 0 18 18"
         fill="none"
       >

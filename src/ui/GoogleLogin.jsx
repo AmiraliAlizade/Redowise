@@ -26,7 +26,7 @@ function GoogleLogin() {
               gradientUnits="userSpaceOnUse"
             >
               <stop />
-              <stop offset="1" stop-color="#666666" stop-opacity="0" />
+              <stop offset="1" stopColor="#666666" stopOpacity="0" />
             </linearGradient>
           </defs>
         </svg>
@@ -55,7 +55,7 @@ function GoogleLogin() {
               gradientUnits="userSpaceOnUse"
             >
               <stop />
-              <stop offset="1" stop-color="#666666" stop-opacity="0" />
+              <stop offset="1" stopColor="#666666" stopOpacity="0" />
             </linearGradient>
           </defs>
         </svg>

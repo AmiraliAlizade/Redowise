@@ -1,12 +1,46 @@
+import { useEffect, useState } from "react";
 import AppLogoTwo from "../ui/AppLogoTwo";
 import BackLogo from "../ui/BackLogo";
 import CodeInput from "../ui/CodeInput";
 import EditEmail from "../ui/EditEmail";
-
 import LinkButton from "../ui/LinkButton";
 import ResendTime from "../ui/ResendTime";
+import { useDispatch, useSelector } from "react-redux";
+import { useMutation } from "@tanstack/react-query";
+import { verifyOtp } from "../services/apiAuthentication";
+import { useNavigate } from "react-router";
+import { setToken } from "../redux/authSlice";
 
 function VerifySignUpPage() {
+  const [otp, setOtp] = useState("");
+  const userState = useSelector((state) => state.auth.user);
+  const access_token = useSelector((state) => state.auth?.access_token || "");
+
+  console.log(access_token);
+  const dispatch = useDispatch();
+  const userEmail = userState.email;
+  const user = { email: userEmail, otp: otp };
+  const navigate = useNavigate();
+
+  function handleSuccess(data) {
+    navigate("/createProfile");
+    dispatch(setToken(data.user.token.access_token));
+    console.log(data.user.token.access_token);
+  }
+
+  const { mutate: VerifyUserMutation, isPending } = useMutation({
+    mutationFn: verifyOtp,
+    onSuccess: (data) => {
+      handleSuccess(data);
+    },
+  });
+
+  console.log(userState.access_token);
+
+  useEffect(() => {
+    console.log("Updated authSlice:", userState);
+  }, [userState]);
+
   return (
     <div className="fixed inset-0 w-[99.5%]  left-1/2 -translate-x-1/2  bg-white z-50 rounded-2xl overflow-hidden">
       <div className="w-screen h-screen  bg-[linear-gradient(330deg,#F79F00,#51C3B7)] reletive  flex flex-col items-center justify-end pb-1 opacity-70 ">
@@ -26,7 +60,12 @@ function VerifySignUpPage() {
         </div>
         <footer className="  bg-white w-[95%] h-105 p-[20px] rounded-[20px] ">
           <div className="absolute flex flex-col gap-[20px] w-[90%] left-1/2 -translate-x-1/2">
-            <div className="flex flex-col gap-[12px]">
+            <form
+              className="flex flex-col gap-[12px]"
+              onSubmit={(e) => {
+                e.preventDefault(), VerifyUserMutation(user);
+              }}
+            >
               <h1 className="font-inter text-black text-[20px] font-bold">
                 Smarter Work. Better Results
               </h1>
@@ -34,13 +73,13 @@ function VerifySignUpPage() {
                 Enter your email to sign in or sign up on Redo-wise
               </h1>
               <EditEmail />
-              <CodeInput />
+              <CodeInput onComplete={(code) => setOtp(code)} />
               <ResendTime />
 
               <div className="mt-10">
                 <LinkButton>Verify</LinkButton>
               </div>
-            </div>
+            </form>
           </div>
         </footer>
       </div>
