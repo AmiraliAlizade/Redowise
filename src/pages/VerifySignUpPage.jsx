@@ -3,7 +3,7 @@ import AppLogoTwo from "../ui/AppLogoTwo";
 import BackLogo from "../ui/BackLogo";
 import CodeInput from "../ui/CodeInput";
 import EditEmail from "../ui/EditEmail";
-import LinkButton from "../ui/LinkButton";
+import Button from "../ui/Button";
 import ResendTime from "../ui/ResendTime";
 import { useDispatch, useSelector } from "react-redux";
 import { useMutation } from "@tanstack/react-query";
@@ -14,9 +14,9 @@ import toast from "react-hot-toast";
 
 function VerifySignUpPage() {
   const [otp, setOtp] = useState("");
-  const userState = useSelector((state) => state.auth.user);
+  const userState = useSelector((state) => state.auth.loginUser);
 
-  console.log(userState.access_token);
+  // console.log(userState.access_token);
   const dispatch = useDispatch();
   const userEmail = userState.email;
   const user = { email: userEmail, otp: otp };
@@ -37,20 +37,15 @@ function VerifySignUpPage() {
     },
     onSuccess: (data) => {
       handleSuccess(data);
+
       console.log(data);
     },
   });
 
-  useEffect(() => {
-    console.log("Updated authSlice:", userState);
-  }, [userState]);
-
   return (
     <div className="fixed inset-0 w-[99.5%]  left-1/2 -translate-x-1/2  bg-white z-50 rounded-2xl overflow-hidden">
-      <div className="w-screen h-screen  bg-[linear-gradient(330deg,#F79F00,#51C3B7)] reletive  flex flex-col items-center justify-end pb-1 opacity-70 ">
-        <div className="absolute top-[7%] left-[7%]">
-          <BackLogo />
-        </div>
+      <div className="absolute inset-0 bg-[linear-gradient(360deg,#F79F00,#effffd,#51C3B7)] blur-[197px]"></div>
+      <div className="w-screen h-screen  reletive  flex flex-col items-center justify-end pb-1 opacity-70 ">
         <div className=" absolute  top-[20%] bottom-[80%] left-1/2 right-1/2">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  justify-center items-center inline-flex flex-col  p-[100px] ">
             <AppLogoTwo />
@@ -76,12 +71,15 @@ function VerifySignUpPage() {
               <h1 className="font-inter text-black text-[14px]/[23px] font-normal">
                 Enter your email to sign in or sign up on Redo-wise
               </h1>
-              <EditEmail />
-              <CodeInput onComplete={(code) => setOtp(code)} />
+              <EditEmail isPending={isPending} />
+              <CodeInput
+                onComplete={(code) => setOtp(code)}
+                isPending={isPending}
+              />
               <ResendTime />
 
               <div className="mt-10">
-                <LinkButton>Verify</LinkButton>
+                <Button>Verify</Button>
               </div>
             </form>
           </div>

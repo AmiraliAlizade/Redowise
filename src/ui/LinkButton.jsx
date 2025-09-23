@@ -1,9 +1,14 @@
-function Button({ children }) {
+import { Link } from "react-router";
+
+function LinkButton({ to, children }) {
   return (
-    <button className="bg-[#006A62] text-white font-medium text-[16px] h-[58px] px-[24px] py-[12px] flex justify-center items-center gap-[8px] rounded-[14px] w-[100%]">
+    <Link
+      to={to}
+      className="bg-white text-[#3F4947] border border-solid border-[#BFC9C7] font-medium text-[16px] h-[58px] px-[24px] py-[12px] flex justify-center items-center gap-[8px] rounded-[14px] w-[100%]"
+    >
       {children}
-    </button>
+    </Link>
   );
 }
 
-export default Button;
+export default LinkButton;

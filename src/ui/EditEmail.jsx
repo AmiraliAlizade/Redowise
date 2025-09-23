@@ -5,23 +5,32 @@ import { useDispatch, useSelector } from "react-redux";
 import EmailLogo from "./EmailLogo";
 import { useForm } from "react-hook-form";
 import { signUp } from "../redux/authSlice";
+import { createUser } from "../services/apiAuthentication";
+import { useMutation } from "@tanstack/react-query";
 
 function EditEmail() {
   const [isEditEmail, setIsEditEmail] = useState(false);
 
-  const authSlice = useSelector((state) => state.auth);
-  const userEmail = authSlice.user.email;
+  const userState = useSelector((state) => state.auth.loginUser);
+
+  const userEmail = userState.email;
   const [email, setEmail] = useState(userEmail);
   const inputRef = useRef();
   const dispatch = useDispatch();
 
-  console.log(userEmail);
+
+
+  const { mutate: CreateUserMutation, isPending } = useMutation({
+    mutationFn: createUser,
+
+  });
 
   useEffect(
     function () {
       function handleClickOutside(e) {
         if (inputRef.current && !inputRef.current.contains(e.target)) {
           dispatch(signUp(email));
+          CreateUserMutation(email);
           setIsEditEmail(false);
         }
       }
@@ -53,6 +62,7 @@ function EditEmail() {
                 className="outline-none border-none font-inter placeholder:font-normal placeholder:text-[#525B59] w-[100%]"
                 placeholder={userEmail}
                 onChange={(e) => setEmail(e.target.value)}
+                disabled={isPending}
               />
             </div>
           </div>

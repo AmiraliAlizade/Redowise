@@ -3,14 +3,13 @@ import AppLogoOne from "../ui/AppLogoOne";
 import ButtonArrow from "../ui/ButtonArrow";
 import bgImage from "../images/5915634301788080553-r.png";
 
-import LinkButton from "../ui/LinkButton";
-import Button from "../ui/LinkButton";
+import Button from "../ui/Button";
 import { Link } from "react-router";
 
 function StartPage() {
   return (
     <div className="fixed inset-0 w-[99.5%] left-1/2  -translate-x-1/2 bg-white z-50 rounded-2xl overflow-hidden">
-      <div className="absolute inset-0 bg-[linear-gradient(330deg,#F79F00,#effffd,#51C3B7)]"></div>
+      <div className="absolute inset-0 bg-[linear-gradient(360deg,#F79F00,#effffd,#51C3B7)] blur-[197px]"></div>
 
       <div
         className="absolute top-20 bg-size-[380px] bottom-0 left-0 right-0 h-[780px] bg-no-repeat bg-right  opacity-90 bg-none  "
@@ -35,7 +34,7 @@ function StartPage() {
                 Focus On Growth, While We Keep Things Organized.
               </h1>
               <div className=" mt-8">
-                <Link to="/login">
+                <Link to="/signUp">
                   <Button>
                     Get Start
                     <ButtonArrow />

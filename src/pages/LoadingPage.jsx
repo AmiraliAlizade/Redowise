@@ -20,7 +20,8 @@ function LoadingPage() {
   );
   return (
     <div className="fixed inset-0 w-[99.5%]  left-1/2 -translate-x-1/2  bg-white z-50 rounded-2xl overflow-hidden">
-      <div className="w-full h-full  bg-[linear-gradient(330deg,#F79F00,#effffd,#51C3B7)] reletive opacity-70">
+      <div className="absolute inset-0 bg-[linear-gradient(360deg,#F79F00,#effffd,#51C3B7)] blur-[197px]"></div>
+      <div className="w-full h-full   reletive opacity-70">
         <div className=" absolute  top-2/7 bottom-1/2 left-1/2 right-1/2">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  justify-center items-center inline-flex flex-col  p-[100px] ">
             <AppLogoOne />

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-function CodeInput({ onComplete }) {
+function CodeInput({ onComplete, isPending }) {
   const inputRef = useRef([]);
   const [values, setValues] = useState(["", "", "", "", "", ""]);
   const isComplete = values.every((v) => v !== "");
@@ -80,6 +80,7 @@ function CodeInput({ onComplete }) {
               : " border-[#C2CFCC]"
           } focus:outline-[#51C3B7] rounded-[14px] text-center py-[16px] px-0 w-[20%]`}
           onWheel={(e) => e.currentTarget.blur()}
+          disabled={isPending}
         />
       ))}
     </div>

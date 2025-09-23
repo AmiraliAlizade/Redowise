@@ -3,8 +3,7 @@
 //   return new Promise((resolve) => {
 //     setTimeout(() => {
 //       resolve({
-//         user: { email, id: "mock-user-id" },
-//         token: { access_token: "mock-access-token" },
+//         message: "A verification code has been sent for you",
 //       });
 //     }, 500);
 //   });
@@ -44,8 +43,12 @@ export async function createUser(email) {
       }),
     });
 
+    if (!response.ok) {
+      const errorData = await response.json();
+      console.error(errorData);
+      throw new Error(errorData.detail || "Could not fetch api");
+    }
     const data = await response.json();
-    console.log(data);
 
     return data;
   } catch (error) {
@@ -68,11 +71,38 @@ export async function verifyOtp({ email, otp }) {
       }
     );
 
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.detail || "Could not fetch api");
+    }
     const data = await response.json();
-    console.log(data);
 
     return data;
   } catch (error) {
     throw new Error(error);
+  }
+}
+
+export async function getUser(access_token) {
+  try {
+    if (!access_token) throw new Error("No access token provided");
+
+    const response = await fetch("https://dev-api.redowise.com/auth/me", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${access_token}`,
+      },
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.detail || "Failed to fetch current user");
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    throw error;
   }
 }

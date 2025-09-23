@@ -11,8 +11,8 @@ function ButtonArrow() {
         <path
           d="M1.5 1L11.5 1"
           stroke="white"
-          stroke-width="1.5"
-          stroke-linecap="round"
+          strokeWidth="1.5"
+          strokeLinecap="round"
         />
       </svg>
       <svg
@@ -25,14 +25,13 @@ function ButtonArrow() {
         <path
           d="M1.5 1C1.5 1 5.5 5.77214 5.5 6C5.5 6.22786 1.5 11 1.5 11"
           stroke="white"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </svg>
     </span>
   );
 }
 
-
-export default ButtonArrow
+export default ButtonArrow;
