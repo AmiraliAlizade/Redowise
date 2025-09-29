@@ -68,7 +68,7 @@ function SignInPage() {
               <div className="mt-3">
                 <Button>Log in</Button>
               </div>
-              <Link className="w-full flex justify-center">
+              <Link to='/forgetPassword' className="w-full flex justify-center">
                 <span className="flex items-center gap-[11px]">
                   <img src={lock} alt="" />
                   <p className="font-bold font-[14px] text-[#3F4948]">

@@ -43,16 +43,15 @@ export async function createUser(email) {
       }),
     });
 
-    if (!response.ok) {
-      const errorData = await response.json();
-      console.error(errorData);
-      throw new Error(errorData.detail || "Could not fetch api");
-    }
     const data = await response.json();
+
+    if (data.statusCode !== 200) {
+      throw new Error(data.errorMessage);
+    }
 
     return data;
   } catch (error) {
-    throw new Error(error);
+    throw error;
   }
 }
 export async function verifyOtp({ email, otp }) {
@@ -71,10 +70,6 @@ export async function verifyOtp({ email, otp }) {
       }
     );
 
-    if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData.detail || "Could not fetch api");
-    }
     const data = await response.json();
 
     return data;
@@ -95,10 +90,6 @@ export async function getUser(access_token) {
       },
     });
 
-    if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData.detail || "Failed to fetch current user");
-    }
 
     const data = await response.json();
     return data;

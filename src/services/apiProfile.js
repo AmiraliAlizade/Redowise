@@ -14,14 +14,10 @@ export async function createUpdateProfile(profile, access_token) {
           general_job_title: profile.general_job_title,
           password: profile.password,
           confirm_password: profile.confirm_password,
+          redowise_id: profile.redowise_id,
         }),
       }
     );
-
-    if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData.detail || "Could not fetch api");
-    }
 
     const data = await response.json();
 

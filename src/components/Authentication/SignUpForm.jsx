@@ -19,11 +19,14 @@ function SignUpForm() {
   const { mutate: CreateUserMutation, isPending } = useMutation({
     mutationFn: createUser,
     onSuccess: (data) => {
-      toast.success(data.message);
+      toast.success(data.data.message);
+      console.log(data);
+      console.log(userState);
       navigate("/verifySignUp");
     },
     onError: (error) => {
-      toast.success(error.message);
+      toast.error(error.message);
+      console.log(error)
     },
   });
 
@@ -33,7 +36,10 @@ function SignUpForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-[20px]">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="flex flex-col gap-[20px]"
+    >
       <div className="flex flex-col border border-solid  border-[#D3DEDC] px-[16px] rounded-[8px]  justify-center ">
         <div className="flex py-[8px] gap-[12px] items-center ">
           <EmailLogo />

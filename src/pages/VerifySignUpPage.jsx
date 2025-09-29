@@ -23,8 +23,11 @@ function VerifySignUpPage() {
   const navigate = useNavigate();
 
   function handleSuccess(data) {
+    const access_token = data?.data?.token?.access_token;
+
     navigate("/createProfile");
-    dispatch(setToken(data.token.access_token));
+
+    dispatch(setToken(access_token));
   }
 
   const { mutate: VerifyUserMutation, isPending } = useMutation({
@@ -37,7 +40,7 @@ function VerifySignUpPage() {
     },
     onSuccess: (data) => {
       handleSuccess(data);
-
+      console.log(userEmail);
       console.log(data);
     },
   });

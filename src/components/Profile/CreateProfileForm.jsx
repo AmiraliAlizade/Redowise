@@ -17,25 +17,24 @@ import { useNavigate } from "react-router";
 import toast from "react-hot-toast";
 
 function CreateProfileForm() {
-  const [isShowPassword, setIsShowPassword] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
   const userState = useSelector((state) => state.auth.loginUser);
   const access_token = userState.access_token;
+
   const fileInputRef = useRef();
   const navigate = useNavigate();
 
-  const { register, handleSubmit, setValue, watch } = useForm({
-    defaultValues: {
-      avatarUrl: "",
-    },
-  });
+  console.log(access_token);
+
+  const { register, handleSubmit } = useForm();
 
   const { mutate: ProfileMutation, isPending } = useMutation({
     mutationFn: ({ profile, access_token }) =>
       createUpdateProfile(profile, access_token),
 
-    onSuccess: () => {
+    onSuccess: (data) => {
       toast.success("The profile creation successfully completed ! ");
+      console.log(data);
       navigate("/app");
     },
     onError: (error) => {
@@ -43,22 +42,13 @@ function CreateProfileForm() {
     },
   });
 
-  useEffect(function () {
-    if (selectedImage) {
-      setValue("avatarUrl", selectedImage.name);
-    }
-  }, []);
-
-  const avatar_url = watch("avatarUrl");
-
   function onSubmit(data) {
     const profile = {
       name: data.fullName,
-      phone_number: data.phoneNumber,
       general_job_title: data.jobTitle,
-      password: data.password,
-      avatar_url: avatar_url,
-      confirm_password: data.confirmPassword,
+      redowise_id: data.redowiseId,
+      password: "amirali1899",
+      confirm_password: "amirali1899",
     };
 
     ProfileMutation({ profile, access_token });
@@ -151,7 +141,7 @@ function CreateProfileForm() {
             type="text"
             className="outline-none border-none font-inter placeholder:font-normal placeholder:text-[#525B59] w-full"
             placeholder="User name"
-            {...register("userName", {
+            {...register("redowiseId", {
               required: "The Username is required for creating profile",
             })}
           />
