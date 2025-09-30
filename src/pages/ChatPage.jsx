@@ -3,6 +3,7 @@ import ChatNavbar from "../ui/ChatNavbar";
 import SumTask from "../ui/Tasks/SumTask";
 
 import DraftTask from "../ui/Tasks/DraftTask";
+import IncompleteTask from "../ui/Tasks/IncompleteTask";
 
 function ChatPage() {
   return (
@@ -12,6 +13,7 @@ function ChatPage() {
         <div className="w-full overflow-hidden py-18 ">
           <div className=" w-full h-full flex-1  justify-center items-center p-[20px] overflow-y-scroll min-h-0 ">
             <DraftTask />
+            <IncompleteTask />
           </div>
         </div>
       </div>
