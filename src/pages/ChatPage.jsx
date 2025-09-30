@@ -1,9 +1,12 @@
 import ChatFooter from "../ui/ChatFooter";
 import ChatNavbar from "../ui/ChatNavbar";
-import SumTask from "../ui/Tasks/SumTask";
+import SumTask from "../ui/Tasks/DraftSumTask";
 
 import DraftTask from "../ui/Tasks/DraftTask";
 import IncompleteTask from "../ui/Tasks/IncompleteTask";
+import IncompleteSumTask from "../ui/Tasks/IncompleteSumTask";
+import ActiveTask from "../ui/Tasks/ActiveTask";
+import ActiveSumTask from "../ui/Tasks/ActiveSumTask";
 
 function ChatPage() {
   return (
@@ -12,8 +15,11 @@ function ChatPage() {
         <ChatNavbar />
         <div className="w-full overflow-hidden py-18 ">
           <div className=" w-full h-full flex-1  justify-center items-center p-[20px] overflow-y-scroll min-h-0 ">
-            <DraftTask />
+            {/* <DraftTask />
             <IncompleteTask />
+            <IncompleteSumTask /> */}
+            {/* <ActiveTask /> */}
+            <ActiveSumTask />
           </div>
         </div>
       </div>

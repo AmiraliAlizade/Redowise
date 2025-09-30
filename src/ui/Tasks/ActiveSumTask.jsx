@@ -1,8 +1,10 @@
 import task from "../../images/task.svg";
 import ActionFooter from "./ActionFooter";
 import SumTaskInfo from "./SumTaskInfo";
+import tickCircle from "../../images/tick-circle.svg";
+import SumTaskInfo2 from "./SumTaskInfo2";
 
-function SumTask() {
+function ActiveSumTask() {
   return (
     <div className="flex">
       <div className="w-[4px] bg-[#687372] rounded-l-[8px]"></div>
@@ -12,12 +14,13 @@ function SumTask() {
           <p className="text-[12px]/[16px] font-normal tracking-[0.4px] text-[#1C1B1F]">
             Design the main screens of the application{" "}
           </p>
+          <img src={tickCircle} alt="" />
         </header>
-        <SumTaskInfo />
+        <SumTaskInfo2 />
         <ActionFooter />
       </div>
     </div>
   );
 }
 
-export default SumTask;
+export default ActiveSumTask;
