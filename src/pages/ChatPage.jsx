@@ -8,6 +8,7 @@ import IncompleteSumTask from "../ui/Tasks/IncompleteSumTask";
 import ActiveTask from "../ui/Tasks/ActiveTask";
 import ActiveSumTask from "../ui/Tasks/ActiveSumTask";
 import OutgoingMessage from "../ui/Messages/OutgoingMessage";
+import IncomingMessage from "../ui/Messages/IncomingMessage";
 
 function ChatPage() {
   return (
@@ -22,7 +23,9 @@ function ChatPage() {
             {/* <ActiveTask /> */}
             {/* <ActiveSumTask /> */}
             <OutgoingMessage />
+            <IncomingMessage />
             <DraftTask />
+            
           </div>
         </div>
       </div>

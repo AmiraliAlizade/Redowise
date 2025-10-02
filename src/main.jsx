@@ -21,6 +21,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import { Toaster } from "react-hot-toast";
 import ForgetPasswordPage from "./pages/ForgetPasswordPage.jsx";
 import CreatePasswordPage from "./pages/CreatePasswordPage.jsx";
+import TeamsPage from "./pages/TeamsPage.jsx";
 
 const queryClient = new QueryClient();
 
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
   {
     path: "start",
     element: <StartPage />,
+  },
+  {
+    path: "teams",
+    element: <TeamsPage />,
   },
 
   { path: "chat", element: <ChatPage /> },
