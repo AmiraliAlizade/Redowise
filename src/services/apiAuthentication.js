@@ -72,6 +72,35 @@ export async function verifyOtp({ email, otp }) {
 
     const data = await response.json();
 
+    if (data.statusCode !== 200) {
+      throw new Error(data.errorMessage);
+    }
+
+    return data;
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
+export async function signInUser(user) {
+  try {
+    const response = await fetch("https://dev-api.redowise.com/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: user?.email,
+        password: user?.password,
+      }),
+    });
+
+    const data = await response.json();
+    console.log(data);
+    if (data.statusCode !== 200) {
+      throw new Error(data.errorMessage);
+    }
+
     return data;
   } catch (error) {
     throw new Error(error);
@@ -90,8 +119,10 @@ export async function getUser(access_token) {
       },
     });
 
-
     const data = await response.json();
+    if (data.statusCode !== 200) {
+      throw new Error(data.errorMessage);
+    }
     return data;
   } catch (error) {
     throw error;
