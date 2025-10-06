@@ -1,3 +1,5 @@
+import { store } from "../redux/store";
+
 // export async function createUser(email) {
 //   console.log("Mock createUser called with:", email);
 //   return new Promise((resolve) => {
@@ -30,6 +32,40 @@
 //     }, 500);
 //   });
 // }
+
+export async function fetchWithAuth(url, options = {}) {
+  const state = store.getState();
+
+  let access_token = state.auth.loginUser.access_token;
+  const refresh_token = state.auth.loginUser.refresh_token;
+
+  const config = {
+    ...options,
+    headers: {
+      ...(options.headers || {}),
+      Authorization: `Bearer ${access_token}`,
+      "Content-Type": "application/json",
+    },
+  };
+
+  let res = await fetch(url, config);
+
+  if (res.status === 401 && refresh_token) {
+    console.log("Access token expired, refreshing...");
+
+    const newAccessToken = await refreshAccessToken(
+      store.dispatch,
+      refresh_token
+    );
+
+    if (newAccessToken) {
+      config.headers.Authorization = `Bearer ${newAccessToken}`;
+      res = await fetch(url, config);
+    }
+  }
+
+  return res;
+}
 
 export async function createUser(email) {
   try {
@@ -126,5 +162,30 @@ export async function getUser(access_token) {
     return data;
   } catch (error) {
     throw error;
+  }
+}
+
+export async function refreshAccessToken(dispatch, refresh_token) {
+  try {
+    const res = await fetch("https://yourapi.com/auth/refresh", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ refresh_token }),
+    });
+
+    if (!res.ok) {
+      throw new Error("Failed to refresh token");
+    }
+
+    const data = await res.json();
+
+    // update Redux with the new access token
+    dispatch(setToken(data.access_token));
+
+    return data.access_token;
+  } catch (err) {
+    console.error("Token refresh failed:", err);
+    dispatch(logout());
+    return null;
   }
 }

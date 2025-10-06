@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 
 function CodeInput({ onComplete, isPending }) {
   const inputRef = useRef([]);
-  const [values, setValues] = useState(["", "", "", "", "", ""]);
+  const [values, setValues] = useState(["", "", "", "", ""]);
   const isComplete = values.every((v) => v !== "");
   function handleChange(e, index) {
     let digit = e.target.value.replace(/\D/g, "");
